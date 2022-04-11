@@ -1,0 +1,20 @@
+server:
+  port: 3355
+
+spring:
+  application:
+    name: config-client
+  # Config客戶端設定
+  config:
+    label: master #分支名稱
+    name: config #設定文件名稱
+    profile: dev #讀取後綴名稱  上述3個綜合： master分支上config-dev.yml的設定文件被讀取 http://config-3344.com:3344/master/config-dev.yml
+    uri: http://localhost:3344 # 設定中心地址
+
+#服務註冊到Eureka
+eureka:
+  client:
+    register-with-eureka: true    # 表示是否向Eureka註冊中心註冊自己
+    fetch-registry: true          #fetch-registry如果為false，則表示自己為註冊中心
+    service-url:
+      defaultZone: http://localhost:7001/eureka
